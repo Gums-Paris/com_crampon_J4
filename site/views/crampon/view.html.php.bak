@@ -1,0 +1,62 @@
+<?php 
+jimport( 'joomla.application.component.view');
+jimport('joomla.filesystem.folder');
+
+class CramponViewCrampon extends JViewLegacy
+{
+	function display($tpl = null)
+	{     
+
+    $this->item = $this->get( 'Item' );
+  
+    $jinput = JFactory::getApplication()->input;
+    $this->no   = $jinput->post->get('no', 0, "INT");
+    
+    if ($this->no>0) {
+      $this->mois = $jinput->post->get('mois', 0, "INT");
+      $this->an   = $jinput->post->get('an', 0, "INT");
+    
+
+      // On traite le fichier à télécharger
+      $fichier = $jinput->files->get('fichier');      
+      if ($fichier["size"]>0) {
+        $src  = $fichier['tmp_name'];                
+        $this->fichier = (string) $this->no . '.pdf';        
+        
+        // Répertoire du n° en cours - si il n'existe pas on le crée
+        $path = PATH_CRAMPON."/". (string) $this->no;         
+        if (!JFolder::exists($path)) {
+          JFolder::create($path);
+        }
+        
+        $dest = $path . "/" . $this->fichier;
+        
+        // Backup de l'éventuel fichier existant
+        if (JFile::exists($dest)) {
+          JFile::copy($dest, $dest. ".bak");
+        } 
+        $this->uploaded = JFile::upload($src, $dest);
+                
+
+      } else { // Fichier déjà téléchargé
+        $this->fichier = (string) $this->no . '.pdf';                          
+        if (is_file(PATH_CRAMPON."/". (string) $this->no. "/" .$this->fichier)) {
+          $this->uploaded = true;
+        }          
+      }       
+
+      $model = $this->getModel();
+      $this->articles = $model->getArticles();
+
+      //$model->splitPdf();
+
+
+    }
+
+    
+    
+	  parent::display($tpl);
+    
+	}
+}
+?>

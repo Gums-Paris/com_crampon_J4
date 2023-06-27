@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="4.0" method="upgrade">
+    <name>com_crampon</name>
+    <creationDate>2017-11-11</creationDate>
+    <copyright>2017 GUMS</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <author>B. Dhalluin</author>
+    <authorEmail>gums@gumsparis.asso.fr</authorEmail>
+    <authorUrl>https://gumsparis.asso.fr/</authorUrl>
+    <version>CVS: 2.0.0</version>
+    <description>Mise en ligne du "Crampon", revue du GUMS</description>
+    <namespace path="src">Crampon\Component\Crampon</namespace>
+    
+    <install> <!-- Runs on install -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    <update> <!-- Runs on update -->
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+        </schemas>
+    </update>
+    <uninstall> <!-- Runs on uninstall -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+
+    <files folder="site">
+    	<folder>helpers</folder>
+    	<folder>models</folder>
+    	<folder>views</folder>
+      	<filename>controller.php</filename>
+      	<filename>crampon.php</filename>
+      	<filename>index.html</filename>
+      	<filename>router.php</filename>
+    </files>
+
+  <administration>
+    <menu link="option=com_crampon">Le Crampon</menu>
+    <files folder="admin">
+      <folder>models</folder>
+      <folder>sql</folder>
+      <folder>views</folder>
+      <filename>controller.php</filename>
+      <filename>crampon.php</filename>
+      <filename>index.html</filename>
+    </files>
+  </administration>
+</extension>
+  
