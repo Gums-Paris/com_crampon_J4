@@ -1,12 +1,13 @@
 <?php 
 jimport( 'joomla.application.component.view');
 jimport('joomla.filesystem.folder');
+use \Joomla\CMS\Factory;
 
 class CramponViewListe extends JViewLegacy
 {
 	function display($tpl = null)
-	{     
-		$jinput = JFactory::getApplication()->input;
+	{   
+		$jinput = Factory::getApplication()->input;
 		$this->an = $jinput->get("an", 0, "INT");
 		$this->search = $jinput->get("search");
 		

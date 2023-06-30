@@ -1,5 +1,6 @@
 <?php
 defined('_JEXEC') or die;
+use \Joomla\CMS\Factory;
 
 class CramponModelVisupdf extends JModelItem
 {
@@ -10,7 +11,7 @@ class CramponModelVisupdf extends JModelItem
 
     // Format normal de l'id = n°crampon_n°item
 
-     $jinput = JFactory::getApplication()->input;
+     $jinput = Factory::getApplication()->input;
      $no2 = (int) $jinput->get('no');          
      $id = $jinput->get('id');     
      $x = explode("_", $id);         

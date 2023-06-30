@@ -1,15 +1,16 @@
 <?php
 defined('_JEXEC') or die;
+use \Joomla\CMS\Factory;
 
 // Include the component HTML helpers.
 //JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 //JHtml::_('behavior.formvalidation');
 //JHtml::_('behavior.keepalive');
 //JHtml::_('formbehavior.chosen', 'select');
-	JHTML::_('behavior.modal');
+//	JHTML::_('behavior.modal');
 
 $script = str_replace( JPATH_ROOT, "", dirname(__FILE__)) . '/edit.js';//.rand();
-JFactory::getDocument()->addScript($script);  
+Factory::getDocument()->addScript($script);  
 ?>
 <form action="index.php" method="post" name="adminForm" id="adminForm" class="cb_template edit_crampon" enctype="multipart/form-data" >
 <input type="hidden" name="option" value="com_crampon">

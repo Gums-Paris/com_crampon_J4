@@ -2,6 +2,7 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.filesystem.folder');
+use \Joomla\CMS\Factory;
 
 class CramponModelCrampon extends JModelAdmin
 {
@@ -14,7 +15,7 @@ class CramponModelCrampon extends JModelAdmin
   public function getItem($id = null) { 
 
     $db		= $this->getDbo();
-    $jinput = JFactory::getApplication()->input;
+    $jinput = Factory::getApplication()->input;
 
     // Est-ce que id (=no du crampon) est renseigné dans le formulaire ?   
     $id = $jinput->post->get('no', 0, "INT");

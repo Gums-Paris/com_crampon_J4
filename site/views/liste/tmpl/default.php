@@ -1,7 +1,8 @@
 <?php // no direct access
 defined('_JEXEC') or die('Restricted access'); 
+use \Joomla\CMS\Factory;
 setlocale(LC_TIME, "fr_FR.UTF8");
-$this->guest = JFactory::getUser()->guest;
+$this->guest = Factory::getUser()->guest;
 ?>
 <div id="blogcrampon">
 <div class="cb_template">
@@ -23,7 +24,7 @@ function myFunction() {
 </script>
 <?php 
 
-//$user	= JFactory::getUser();
+//$user	= Factory::getUser();
 
 foreach($this->crampons as $no => $crampon) {     
 

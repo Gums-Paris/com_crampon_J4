@@ -8,20 +8,21 @@
 
 defined('_JEXEC') or die;
 setlocale(LC_TIME, "fr_FR.UTF8");
+use \Joomla\CMS\Factory;
 
 abstract class CramponHelper
 {
 
 	public static function checkUser($redirect = true)
 	{
-  	$user	= JFactory::getUser();
+  	$user	= Factory::getUser();
     $aid = $user->groups;
     $groupes_autorises = array(8, 14);
     $check = ( count(array_intersect($aid, $groupes_autorises)) > 0);
     if($check === false and $redirect) {     
-      $uri = JFactory::getURI(); 
+      $uri = Factory::getURI(); 
       $return = $uri->toString(); 
-      $app = JFactory::getApplication();
+      $app = Factory::getApplication();
   		$app->redirect('index.php', 
         JText::_('Reservé aux administrateurs') ); 
     }          
@@ -34,9 +35,9 @@ abstract class CramponHelper
 	public static function checkAbonnement()
 	{
 
-    $user	= JFactory::getUser();
+    $user	= Factory::getUser();
 
-    $db		= JFactory::getDbo();
+    $db		= Factory::getDbo();
     $query	= $db->getQuery(true);
     $query->select('cb_crampon')
       ->from($db->quoteName('#__comprofiler'))

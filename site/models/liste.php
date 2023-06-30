@@ -1,5 +1,6 @@
 <?php
 defined('_JEXEC') or die;
+use \Joomla\CMS\Factory;
 
 class CramponModelListe extends JModelList
 {
@@ -19,12 +20,13 @@ class CramponModelListe extends JModelList
   function __construct() {
     parent::__construct();
 
-    $mainframe = JFactory::getApplication();
+    $mainframe = Factory::getApplication();
+    $input = $mainframe->input;
 
     // Get pagination request variables
     //$limit = $mainframe->getUserStateFromRequest('global.list.limit', 'limit', $mainframe->getCfg('list_limit'), 'int');
     $limit = 10;
-    $limitstart = JRequest::getVar('limitstart', 0, '', 'int');
+    $limitstart = $input->getInt('limitstart', 0, 'int');
 
     // In case limit has been changed, adjust it
     $limitstart = ($limit != 0 ? (floor($limitstart / $limit) * $limit) : 0);
@@ -38,7 +40,7 @@ class CramponModelListe extends JModelList
 
   function getData() {
 
-    $jinput = JFactory::getApplication()->input;
+    $jinput = Factory::getApplication()->input;
        
     $db		= $this->getDbo();
 
@@ -71,7 +73,7 @@ class CramponModelListe extends JModelList
     $rows = $db->loadObjectList();     
 
     /*
-		$user	= JFactory::getUser();
+		$user	= Factory::getUser();
     if ($user->id==62) {	
 			echo '<pre>'; print_r($rows);echo '</pre>';exit;
     }    

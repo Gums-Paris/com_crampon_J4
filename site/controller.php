@@ -5,6 +5,8 @@
 
 defined('_JEXEC') or die;
 
+use \Joomla\CMS\Factory;
+
 jimport('joomla.application.component.controller');
 
 define('PATH_CRAMPON', JPATH_ROOT."/crampon");
@@ -18,7 +20,7 @@ class CramponController extends JControllerLegacy
   public function display($cachable = false, $urlparams = false) {
 // forcer la vue par défaut si aucun paramètre renseignés dans l'url
 
-     $jinput = JFactory::getApplication()->input;
+     $jinput = Factory::getApplication()->input;
      $view = $jinput->get('view');
 
     if ( $view == "") {
@@ -32,7 +34,7 @@ class CramponController extends JControllerLegacy
   public function save() {
 // sauvegarde du sommaire (via ajax)
 
-    $jinput = JFactory::getApplication()->input;
+    $jinput = Factory::getApplication()->input;
     $l1 = $jinput->post->get('liste', '', 'RAW');
     $liste = json_decode($jinput->post->get('liste', '', 'RAW'));        
     $model = $this->getModel();  
@@ -46,7 +48,7 @@ class CramponController extends JControllerLegacy
 
   public function change_date() {
 // sauvegarde du sommaire (via ajax)
-    $jinput = JFactory::getApplication()->input;
+    $jinput = Factory::getApplication()->input;
     $no = $jinput->get('no');
     $mois = $jinput->get('mois');
     $an = $jinput->get('an');
@@ -58,7 +60,7 @@ class CramponController extends JControllerLegacy
   public function couverture() {
 
     // sauvegarde du sommaire (via ajax)
-    $jinput = JFactory::getApplication()->input;
+    $jinput = Factory::getApplication()->input;
     $couv = json_decode($jinput->post->get('couv', '', 'RAW'));    
     $model = $this->getModel();  
     $msg =  $model->sauveCouverture($couv);
@@ -67,7 +69,7 @@ class CramponController extends JControllerLegacy
   }
 
   public function decoupe() {
-    $jinput = JFactory::getApplication()->input;
+    $jinput = Factory::getApplication()->input;
     $no = $jinput->post->get('no', 0, "INT");   
     $model = $this->getModel();  
     $model->decoupePDF($no);

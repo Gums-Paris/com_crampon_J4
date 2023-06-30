@@ -6,7 +6,6 @@ class CramponViewCrampon extends JViewLegacy
 {
 	function display($tpl = null)
 	{     
-
     CramponHelper::checkUser();
 
     $model = $this->getModel();
@@ -16,8 +15,8 @@ class CramponViewCrampon extends JViewLegacy
     $this->articles = $model->getArticles();
 
     $this->msg = $model->msg;
-    
-    //echo '<pre>'; print_r($this); echo '</pre>'; exit;
+
+//    echo '<pre>'; print_r($this); echo '</pre>'; exit(0);
     
 	  parent::display($tpl);
     

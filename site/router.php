@@ -10,6 +10,8 @@
 
 defined('_JEXEC') or die;
 
+use \Joomla\CMS\Factory;
+
 class CramponRouter extends JComponentRouterBase
 {
    
@@ -43,9 +45,9 @@ class CramponRouter extends JComponentRouterBase
 	public function parse(&$segments)
 	{                   
     
-    $user	= JFactory::getUser();
+    $user	= Factory::getUser();
     if ($user->id==62) {
-      $app  = JFactory::getApplication();
+      $app  = Factory::getApplication();
       $menu = $app->getMenu()->getActive()->query;
       
       //echo '<pre>'; print_r($this); echo '</pre>'; exit;
@@ -58,7 +60,7 @@ class CramponRouter extends JComponentRouterBase
 
       // Appel en modif d'un crampon
       //
-      $app  = JFactory::getApplication();
+      $app  = Factory::getApplication();
       $qry = $app->getMenu()->getActive()->query; 
       if(isset($qry["view"]) and $qry["view"]=="crampon") {
         $vars["no"] = (int) $segments[0];
