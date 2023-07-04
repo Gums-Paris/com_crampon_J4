@@ -119,7 +119,7 @@ foreach($crampon as $article) {
     if ( ($this->guest and $article->reserve) or (! $this->abonne and $article->non_publie)) {
         echo $article->titre;
     } else {
-        echo '<a href="'. JROUTE::_('index.php?option=com_crampon&view=visupdf&id='.$article->alias.'&Itemid=776') .'" target="_blank">'
+		echo '<a href="'. JROUTE::_('index.php?option=com_crampon&view=visupdf&id='.$article->alias.'&Itemid=776') .'" target="_blank">'
             . $article->titre .'</a>';
     }
     if ($article->auteur<>"") { 

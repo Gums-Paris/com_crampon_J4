@@ -1,7 +1,8 @@
 <?php
 defined('_JEXEC') or die;
 use \Joomla\CMS\Factory;
-
+use \Joomla\CMS\HTML\HTMLHelper;
+HTMLHelper::_('jquery.framework');
 // Include the component HTML helpers.
 //JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 //JHtml::_('behavior.formvalidation');

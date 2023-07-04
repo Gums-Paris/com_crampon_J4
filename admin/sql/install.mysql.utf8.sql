@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `j3x_crampon` (
+CREATE TABLE IF NOT EXISTS `#__crampon` (
   `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `date_en_ligne` date NOT NULL,

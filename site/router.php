@@ -52,10 +52,10 @@ class CramponRouter extends JComponentRouterBase
       
       //echo '<pre>'; print_r($this); echo '</pre>'; exit;
     } 
-    
+   
     
   	$vars = array();
-    
+   
     if(isset($segments[0])) {
 
       // Appel en modif d'un crampon
@@ -66,7 +66,7 @@ class CramponRouter extends JComponentRouterBase
         $vars["no"] = (int) $segments[0];
         $vars["Itemid"] = $app->getMenu()->getActive()->id; 
         $vars["view"] = "crampon";         
-        $vars["layout"] = "edit";         
+        $vars["layout"] = "edit"; 
         return $vars;
       }
 
@@ -88,8 +88,8 @@ class CramponRouter extends JComponentRouterBase
       $s = explode(":", $segments[0]);
       $vars['id'] = $s[0];
       $vars['alias'] = $s[1];
-      
     }
+//         echo 'vars = <pre>'; print_r($vars);echo '</pre>';exit;
 
 	  return $vars;
 	}

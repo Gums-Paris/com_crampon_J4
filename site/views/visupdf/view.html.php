@@ -4,7 +4,8 @@ jimport( 'joomla.application.component.view');
 class CramponViewVisupdf extends JViewLegacy
 {
 	function display($tpl = null)
-	{      		                  
+	{     
+
     $f = $this->get( 'Item' );
 
     $this->abonne = CramponHelper::checkAbonnement(); 

@@ -11,12 +11,12 @@ class CramponViewCrampon extends JViewLegacy
     $model = $this->getModel();
 
     $this->item = $this->get( 'Item' );    
-
+//echo ('on est là'); exit(0);
     $this->articles = $model->getArticles();
 
     $this->msg = $model->msg;
 
-//    echo '<pre>'; print_r($this); echo '</pre>'; exit(0);
+//    echo 'entrée = <pre>'; print_r($this); echo '</pre>'; exit(0);
     
 	  parent::display($tpl);
     
