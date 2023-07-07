@@ -2,6 +2,8 @@
 defined('_JEXEC') or die;
 use \Joomla\CMS\Factory;
 use \Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Router\Route;
+
 HTMLHelper::_('jquery.framework');
 // Include the component HTML helpers.
 //JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
@@ -12,12 +14,19 @@ HTMLHelper::_('jquery.framework');
 
 $script = str_replace( JPATH_ROOT, "", dirname(__FILE__)) . '/edit.js';//.rand();
 Factory::getDocument()->addScript($script);  
-?>
-<form action="index.php" method="post" name="adminForm" id="adminForm" class="cb_template edit_crampon" enctype="multipart/form-data" >
+/*
+<form action="index.php" method="post" name="adminForm" id="adminForm" class="cb_template edit_crampon" enctype="multipart/form-data" >  
 <input type="hidden" name="option" value="com_crampon">
 <input type="hidden" name="view" value="crampon">
 <input type="hidden" name="layout" value="edit">
+<input type="hidden" name="Itemid" value="777">
 <input type="hidden" name="task" value="">
+<form action="/index.php?option=com_crampon&amp;view=crampon&amp;layout=edit&amp;Itemid=777" method="post" name="adminForm" id="adminForm" class="form-validate form-vertical">
+*/
+?>
+<form action="<?php echo Route::_('index.php?option=com_crampon&view=crampon&layout=edit&Itemid=777'); ?>" method="post" 
+      enctype="multipart/form-data" name="adminForm" id="adminForm" class="form-validate form-vertical">
+
 <?php 
 
 if ($this->item->id == 0) {

@@ -11,18 +11,21 @@ class CramponModelCrampon extends JModelAdmin
   private $fdpi = false;  // Est-ce que la classe Fpdi est chargée
 
   // Récupération des infos d'un numéro $id
-  //
-  public function getItem($id = null) { 
 
+  public function getItem($id = null) { 
     $db		= $this->getDbo();
+//echo('après db<br>');
+    
     $jinput = Factory::getApplication()->input;
 
     // Est-ce que id (=no du crampon) est renseigné dans le formulaire ?   
     $id = $jinput->post->get('no', 0, "INT");
+
     if ($id == 0) {
       $id = $jinput->get('no', 0, "INT");
     }
     $this->id = $id;
+
 
     // Id non renseigné => on en reste là
     if ($id == 0) {             
@@ -32,7 +35,6 @@ class CramponModelCrampon extends JModelAdmin
     // Si id renseigné on regarde si présent dans la base
     //
     $this->row = $this->getEntete($id);
-
     // N° non trouvé dans la table, on crée un nouvel enregistrement
     if ( $this->row->id <> $id ) {
       $this->row = $this->newItem($id);
@@ -134,18 +136,18 @@ class CramponModelCrampon extends JModelAdmin
 
   }
 
-  // Charge la classe Fpdi (pour manipuler les pdf)
+  // Charge la classe Fdpi (pour manipuler les pdf)
   //
   private function loadFdpi() {
     if ($this->fdpi === false) {
-      $this->root = str_replace("www", "", $_SERVER["DOCUMENT_ROOT"]);
+      $this->root = str_replace(strrchr($_SERVER["DOCUMENT_ROOT"],"/"), "/", $_SERVER["DOCUMENT_ROOT"]);
       require( $this->root . 'vendor/autoload.php');
       $this->fdpi = true;
     }
   }
 
 
-  // Vérifie que le pdf chargé peut être manipulé par Fpdi
+  // Vérifie que le pdf chargé peut être manipulé par Fdpi
   //
   private function check_pdf($file) {
     $this->loadFdpi();

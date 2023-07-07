@@ -42,7 +42,7 @@ class CramponController extends JControllerLegacy
     if ($nb>0) {
       echo $nb . " articles inserés";
     } else {
-      echo "Aucun articles inserés";
+      echo "Aucun article inseré";
     }    
   }
 

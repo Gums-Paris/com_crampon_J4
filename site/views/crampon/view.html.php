@@ -9,9 +9,9 @@ class CramponViewCrampon extends JViewLegacy
     CramponHelper::checkUser();
 
     $model = $this->getModel();
-
+// echo(JPATH_ROOT); exit(0);
     $this->item = $this->get( 'Item' );    
-//echo ('on est là'); exit(0);
+
     $this->articles = $model->getArticles();
 
     $this->msg = $model->msg;

@@ -162,7 +162,7 @@ jQuery(document).ready(function($){
     function sauve() {      
       liste = encodeURIComponent(JSON.stringify(getData()));      
       $.post({
-        url: "index.php?option=com_crampon&task=save&format=raw", 
+        url: "index.php?option=com_crampon&format=raw&Itemid=777&task=save", 
         type: "POST",
         data: "liste=" + liste,        
         success: function(data,status,xhr) {            
@@ -184,7 +184,7 @@ jQuery(document).ready(function($){
       mois = $("#mois" ).val();
       an =  $("#an" ).val();
       $.post({
-        url: "index.php?option=com_crampon&task=change_date&format=raw", 
+        url: "index.php?option=com_crampon&format=raw&Itemid=777&task=change_date",
         type: "POST",
         data: "no=" + no + "&mois=" + mois + "&an=" + an,        
         success: function(data,status,xhr) {
@@ -209,7 +209,7 @@ jQuery(document).ready(function($){
       couv = JSON.stringify(couverture);    
   
       $.post({
-        url: "index.php?option=com_crampon&task=couverture&format=raw", 
+        url: "index.php?option=com_crampon&format=raw&Itemid=777&task=couverture", 
         type: "POST",
         data: "couv=" + couv,        
         success: function(data,status,xhr) {
@@ -228,7 +228,7 @@ jQuery(document).ready(function($){
               $("#pdf" + (i+1)).attr("class", "cache");
             }
       $.post({
-        url: "index.php?option=com_crampon&task=decoupe&format=raw", 
+        url: "index.php?option=com_crampon&format=raw&Itemid=777&task=decoupe", 
         type: "POST",
         data: "no=" + no,        
         success: function(data,status,xhr) {
