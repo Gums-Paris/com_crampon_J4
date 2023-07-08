@@ -7,7 +7,7 @@
     <author>B. Dhalluin</author>
     <authorEmail>gums@gumsparis.asso.fr</authorEmail>
     <authorUrl>https://gumsparis.asso.fr/</authorUrl>
-    <version>CVS: 2.0.1</version>
+    <version>CVS: 2.0.2</version>
     <description>Mise en ligne du "Crampon", revue du GUMS</description>
     <namespace path="src">Crampon\Component\Crampon</namespace>
     

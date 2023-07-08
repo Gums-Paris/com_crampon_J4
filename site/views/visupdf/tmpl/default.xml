@@ -3,4 +3,11 @@
 	<layout title="Article Crampon">
 		<message>Article Crampon</message>
 	</layout>
+	<!-- Add fields to the request variables for the layout. -->
+        <fields name="request">
+                <fieldset name="request">
+                        <field name="id" 
+                        />
+                </fieldset>
+        </fields>
 </metadata>

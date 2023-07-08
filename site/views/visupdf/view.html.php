@@ -7,7 +7,7 @@ class CramponViewVisupdf extends JViewLegacy
 	{     
 
     $f = $this->get( 'Item' );
-
+//echo ('item entrée = <pre>');print_r($f);echo'</pre>';exit(0);
     $this->abonne = CramponHelper::checkAbonnement(); 
 
     
